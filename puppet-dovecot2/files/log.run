@@ -1,0 +1,5 @@
+#!/bin/sh
+if [ ! -d /var/log/dovecot/imap ] ; then
+  mkdir -p /var/log/dovecot/imap
+fi
+exec svlogd -t /var/log/dovecot/imap

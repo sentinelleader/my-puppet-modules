@@ -1,0 +1,5 @@
+#!/bin/sh
+
+chown qmaill:nofiles /var/log/qmail
+exec chpst -u qmaill svlogd -t /var/log/qmail
+

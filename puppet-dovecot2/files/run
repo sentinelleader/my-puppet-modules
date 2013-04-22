@@ -1,0 +1,7 @@
+#!/bin/sh
+
+IMAPCONCURRENCY="`cat /var/easypush/etc/mda/IMAPCONCURRENCY`"
+IMAPCONCURRENCY=${IMAPCONCURRENCY:=25}
+
+exec 2>&1
+exec tcpsvd -c $IMAPCONCURRENCY -v -l 0 0 143 /usr/lib/dovecot/imap-login

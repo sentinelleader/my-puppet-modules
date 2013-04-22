@@ -1,0 +1,11 @@
+hosts = localhost
+dn =  uid=deepofix,ou=People,<%= basedn %>
+dnpass = <%= deepofix_password %>
+sasl_bind = no
+auth_bind = yes
+ldap_version = 3
+base = <%= basedn %>
+auth_bind = yes
+pass_attrs = uid=user
+pass_filter = (&(objectClass=posixAccount)(uid=%u))
+user_attrs = homeDirectory=home,uidNumber=uid,gidNumber=gid,mailQuotaSize=quota=dirsize:storage

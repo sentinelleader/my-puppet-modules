@@ -1,0 +1,79 @@
+allow bind_v2
+allow bind_anon_dn
+loglevel 0
+
+include         /etc/ldap/schema/addressbook.schema
+include         /etc/ldap/schema/core.schema
+include         /etc/ldap/schema/cosine.schema
+include         /etc/ldap/schema/inetorgperson.schema
+include         /etc/ldap/schema/nis.schema
+include         /etc/ldap/schema/samba.schema
+include         /etc/ldap/schema/qmail.schema
+include         /etc/ldap/schema/deepofixuser.schema
+include         /etc/ldap/schema/authldap.schema
+
+pidfile         /var/run/slapd.pid
+argsfile        /var/run/slapd.args
+
+modulepath /usr/lib/ldap
+
+#moduleload rwm
+#overlay rwm
+#rwm-rewriteEngine on
+#rwm-rewriteContext bindDN
+#rwm-rewriteRule "^mail=[^,]+@[^,]+$" "${attr2dn($0)}" ":@I"
+
+
+
+moduleload      syncprov
+moduleload      back_bdb
+database        bdb
+suffix          "<%= base_dn %>"
+rootdn          "<%= root_dn %>"
+rootpw          "<%= root_pwd %>"
+password-hash {SSHA}
+directory       /var/lib/ldap/openldap
+index   objectClass     eq
+index cn pres,eq,sub
+index sn pres,eq,sub
+index uid pres,eq,sub
+index mail pres,eq,sub
+index mailAlternateAddress pres,eq,sub
+index uidNumber pres,eq
+
+
+
+overlay syncprov
+syncprov-checkpoint 100 10
+syncprov-sessionlog 100
+
+access to attr="userPassword,sambaLMPassword,sambaNTPassword"
+        by dn="<%= root_dn %>" write
+        by anonymous auth
+        by self write
+        by * none
+
+access to dn.subtree="<%= base_dn %>"
+        by dn="<%= root_dn %>" write
+        by dn="<%= bind_dn %>" read
+        by self write
+        by users read
+
+access to dn.subtree="ou=people,<%= base_dn %>"
+        by dn="<%= bind_dn %>" read
+        by users read
+
+access to dn.subtree="ou=group,<%= base_dn %>"
+        by dn="<%= bind_dn %>" read
+        by users read
+
+access to dn.subtree="ou=addressbook,<%= base_dn %>"
+        by dn="<%= bind_dn %>" read
+        by users read
+
+access to dn.subtree="<%= base_dn %>" by none
+
+cachesize 1500
+sizelimit 1500
+
+

@@ -1,0 +1,84 @@
+# deepOfix Installer
+# Copyright (c) 2001-2006  DeepRoot Linux
+
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#deeproot linux OID                                             1.3.6.1.4.1.15578
+#deeproot linux ldap                                            1.3.6.1.4.1.15578.3
+#deeproot linux ldap object class                               1.3.6.1.4.1.15578.3.2
+#deeproot linux ldap object class 'user'                        1.3.6.1.4.1.15578.3.2.1
+#deeproot linux ldap attributes                                 1.3.6.1.4.1.15578.3.1
+#deeproot linux ldap attribute 'salutation'                     1.3.6.1.4.1.15578.3.1.14
+#deeproot linux ldap attribute 'designation'                    1.3.6.1.4.1.15578.3.1.15
+#deeproot linux ldap attribute 'birthdate'                      1.3.6.1.4.1.15578.3.1.16
+#deeproot linux ldap attribute 'location'                       1.3.6.1.4.1.15578.3.1.17
+#deeproot linux ldap attribute 'cellphone'                      1.3.6.1.4.1.15578.3.1.18
+#deeproot linux ldap attribute 'personalemail'                  1.3.6.1.4.1.15578.3.1.19
+#deeproot linux ldap attribute 'dateofjoining'                  1.3.6.1.4.1.15578.3.1.20
+#deeproot linux ldap attribute 'localonly'                      1.3.6.1.4.1.15578.3.1.21
+
+
+attributetype ( 1.3.6.1.4.1.15578.3.1.14 NAME ( 'salutation' )
+    EQUALITY caseIgnoreMatch
+    SUBSTR caseIgnoreSubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{32768} )
+
+attributetype ( 1.3.6.1.4.1.15578.3.1.15 NAME ( 'designation' )
+    EQUALITY caseIgnoreMatch
+    SUBSTR caseIgnoreSubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{32768} )
+
+attributetype ( 1.3.6.1.4.1.15578.3.1.17 NAME ( 'location' )
+    EQUALITY caseIgnoreMatch
+    SUBSTR caseIgnoreSubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{32768} )
+
+attributetype ( 1.3.6.1.4.1.15578.3.1.16 NAME ( 'birthdate' )
+    EQUALITY caseIgnoreIA5Match
+    SUBSTR caseIgnoreIA5SubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
+
+attributetype ( 1.3.6.1.4.1.15578.3.1.18 NAME ( 'cellphone' ) 
+    DESC 'RFC1274: mobile telephone number'
+    EQUALITY telephoneNumberMatch
+    SUBSTR telephoneNumberSubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.50 )
+
+attributetype ( 1.3.6.1.4.1.15578.3.1.33 NAME ( 'deepOfixUserDiskUsage' )
+     SYNTAX 1.3.6.1.4.1.1466.115.121.1.27{128} )
+
+attributetype ( 1.3.6.1.4.1.15578.3.1.19 NAME ( 'personalemail' )
+    DESC 'Personal Email Address'
+    EQUALITY caseIgnoreIA5Match
+    SUBSTR caseIgnoreIA5SubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256} )
+
+attributetype ( 1.3.6.1.4.1.15578.3.1.20 NAME ( 'dateofjoining' )
+    DESC 'Date Of Joining'
+    EQUALITY caseIgnoreIA5Match
+    SUBSTR caseIgnoreIA5SubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
+
+attributetype ( 1.3.6.1.4.1.15578.3.1.21 NAME 'localonly'
+    DESC 'Set this attribute for localonly'
+    EQUALITY caseExactIA5Match
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+
+objectclass ( 1.3.6.1.4.1.15578.3.2.1 NAME 'deepofixuser'
+    DESC 'FOR USER'
+    SUP top AUXILIARY
+    MAY ( salutation $ designation $ birthdate $ department 
+    	$ gidNumber $ location $ cellphone $ deepOfixUserDiskUsage $ dateofjoining $ personalemail $ localonly ) )

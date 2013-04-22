@@ -1,0 +1,12 @@
+hosts = <%= ldap_server %>
+dn =  <%= bind_dn %>
+dnpass = <%= bind_pwd %>
+sasl_bind = no
+auth_bind = yes
+ldap_version = 3
+base = <%= base_dn %>
+auth_bind = yes
+pass_attrs = uid=user
+pass_filter = (&(objectClass=posixAccount)(uid=%u))
+user_attrs = homeDirectory=home,mailQuotaSize=quota=dirsize:storage
+user_filter = (&(objectClass=posixAccount)(|(mail=%u)(mailAlternateAddress=%u)(uid=%u)))

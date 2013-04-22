@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ ! -d /var/log/qmail/smtpd/ ]
+then
+        mkdir -p /var/log/qmail/smtpd
+        chown qmaill /var/log/qmail/smtpd
+fi
+
+exec chpst -u qmaill svlogd -t /var/log/qmail/smtpd
+

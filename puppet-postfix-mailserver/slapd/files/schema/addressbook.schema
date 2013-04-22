@@ -1,0 +1,128 @@
+# deepOfix Installer
+# Copyright (c) 2001-2006  DeepRoot Linux
+
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#deeproot linux OID                                             1.3.6.1.4.1.15578
+#deeproot linux ldap                                            1.3.6.1.4.1.15578.3
+#deeproot linux ldap object class                               1.3.6.1.4.1.15578.3.2
+#deeproot linux ldap object class 'user'                        1.3.6.1.4.1.15578.3.2.1
+#deeproot linux ldap object class 'addressbook'                 1.3.6.1.4.1.15578.3.2.2
+#deeproot linux ldap attributes                                 1.3.6.1.4.1.15578.3.1
+#deeproot linux ldap attribute 'countryName'                    1.3.6.1.4.1.15578.3.1.1
+#deeproot linux ldap attribute 'c'                              1.3.6.1.4.1.15578.3.1.2
+#deeproot linux ldap attribute 'organizationName'               1.3.6.1.4.1.15578.3.1.3
+#deeproot linux ldap attribute 'department'                     1.3.6.1.4.1.15578.3.1.4
+#deeproot linux ldap attribute 'cellphoneno'                    1.3.6.1.4.1.15578.3.1.5
+#deeproot linux ldap attribute 'info'                           1.3.6.1.4.1.15578.3.1.6
+#deeproot linux ldap attribute 'locality'                       1.3.6.1.4.1.15578.3.1.7
+#deeproot linux ldap attribute 'url'                            1.3.6.1.4.1.15578.3.1.8
+#deeproot linux ldap attribute 'homeurl'                        1.3.6.1.4.1.15578.3.1.9
+#deeproot linux ldap attribute 'nickname'                       1.3.6.1.4.1.15578.3.1.10
+#deeproot linux ldap attribute 'otherfacsimileno'               1.3.6.1.4.1.15578.3.1.11
+#deeproot linux ldap attribute 'otherpager'                     1.3.6.1.4.1.15578.3.1.12
+#deeproot linux ldap attribute 'otherFacsimiletelephoneNumber'  1.3.6.1.4.1.15578.3.1.13
+
+
+attributetype ( 1.3.6.1.4.1.15578.3.1.1 NAME ( 'countryName' )
+    EQUALITY caseIgnoreMatch
+    SUBSTR caseIgnoreSubstringsMatch 
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{32768} )
+
+attributetype ( 1.3.6.1.4.1.15578.3.1.2 NAME ( 'c' )
+    EQUALITY caseIgnoreMatch
+    SUBSTR caseIgnoreSubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{32768} )
+    
+attributetype ( 1.3.6.1.4.1.15578.3.1.3 NAME ( 'organizationName' )
+    DESC 'RFC2256: organization this object belongs to'
+    EQUALITY caseIgnoreMatch
+    SUBSTR caseIgnoreSubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{32768} )
+
+attributetype ( 1.3.6.1.4.1.15578.3.1.4 NAME ( 'department' )
+    DESC 'RFC2256: organizational unit this object belongs to'
+    EQUALITY caseIgnoreMatch
+    SUBSTR caseIgnoreSubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{32768} )
+
+attributetype ( 1.3.6.1.4.1.15578.3.1.5 NAME ( 'cellphoneno')
+    DESC 'RFC1274: mobile telephone number'
+    EQUALITY telephoneNumberMatch
+    SUBSTR telephoneNumberSubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.50 )
+
+attributetype ( 1.3.6.1.4.1.15578.3.1.6 NAME ( 'info' )
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{32768} )
+
+attributetype ( 1.3.6.1.4.1.15578.3.1.7 NAME ( 'locality' )
+    DESC 'RFC2256: locality which this object resides in'
+    EQUALITY caseIgnoreMatch
+    SUBSTR caseIgnoreSubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{32768} )
+
+attributetype ( 1.3.6.1.4.1.15578.3.1.8 NAME ( 'url' )
+    EQUALITY caseIgnoreMatch
+    SUBSTR caseIgnoreSubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{32768} )
+
+attributetype ( 1.3.6.1.4.1.15578.3.1.9 NAME ( 'homeurl' )
+    EQUALITY caseIgnoreMatch
+    SUBSTR caseIgnoreSubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{32768} )
+		
+attributeType ( 1.3.6.1.4.1.15578.3.1.10 NAME ( 'nickname' )
+    EQUALITY caseIgnoreMatch
+    SUBSTR caseIgnoreSubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{32768} )
+		
+attributetype ( 2.16.840.1.113730.3.1.63 NAME ( 'xmozillaanyphone' )
+    DESC ' XMOZILLAANYPHONE'
+    EQUALITY telephoneNumberMatch
+    SUBSTR telephoneNumberSubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.50 )
+
+attributetype ( 2.16.840.1.113730.3.1.64 NAME ( 'xmozillanickname' )
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{32768} )
+
+attributetype ( 2.16.840.1.113730.3.1.65 NAME ( 'xmozillausehtmlmail' )
+    DESC 'RFC1274: RFC822 Mailbox'
+    EQUALITY caseIgnoreIA5Match
+    SUBSTR caseIgnoreIA5SubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256} )
+    
+attributetype ( 1.3.6.1.4.1.15578.3.1.11 NAME ( 'otherfacsimileno' )
+    DESC 'RFC2256: Facsimile (Fax) Telephone Number'
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.22 )
+					    
+attributetype ( 1.3.6.1.4.1.15578.3.1.12 NAME ( 'otherpager' )
+    DESC ' pager telephone number'
+    EQUALITY telephoneNumberMatch
+    SUBSTR telephoneNumberSubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.50 )
+					
+attributetype ( 1.3.6.1.4.1.15578.3.1.13 NAME ( 'otherFacsimiletelephoneNumber' )
+    DESC 'RFC1274: another fax number'
+    EQUALITY telephoneNumberMatch
+    SUBSTR telephoneNumberSubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.50 )
+
+objectclass ( 1.3.6.1.4.1.15578.3.2.2 NAME 'addressbook'
+    DESC 'FOR CUSTOMISED ADDRESS BOOK'
+    SUP top AUXILIARY
+    MAY ( cellphoneno $ locality $ department $ url $ homeurl $ info
+	$ nickname $ xmozillaanyphone $ xmozillanickname $ xmozillausehtmlmail
+	$ otherfacsimileno $ otherpager $ otherFacsimiletelephoneNumber $ organizationName 
+	$ c $ countryName ) )

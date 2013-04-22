@@ -1,0 +1,16 @@
+#!/bin/sh
+exec 2>&1
+
+QMAIL="/var/qmail"
+
+ALIASEMPTY=`cat $QMAIL/control/defaultdelivery 2> /dev/null`
+
+ALIASEMPTY=${ALIASEMPTY:="./Maildir/"}
+
+PATH="$QMAIL/bin:$PATH"
+
+# limit to prevent memory hogs
+ulimit -c 204800
+
+exec qmail-start "$ALIASEMPTY"
+

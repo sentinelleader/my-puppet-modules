@@ -1,0 +1,9 @@
+server_host = ldap://<%= ldap_server %>
+version = 3
+search_base = <%= base_dn %>
+bind_dn = <%= bind_dn %>
+bind_pw = <%= bind_pwd %>
+bind = yes
+debug_level = 3
+query_filter = (&(|(mail=%s)(mailAlternateAddress=%s)))
+result_attribute = mail

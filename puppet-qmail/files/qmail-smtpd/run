@@ -1,0 +1,28 @@
+#!/bin/sh
+exec 2>&1
+
+QMAIL="/var/qmail"
+ME="`head -1 $QMAIL/control/me`"
+QUSER="qmaild"
+
+PATH="$QMAIL/bin:$PATH"
+
+# source the environemt in ./env
+eval `env - PATH=$PATH chpst -e ./env awk '\
+        BEGIN { for (i in ENVIRON) \
+                if (i != "PATH") { \
+                        printf "export %s=\"%s\"\\n", i, ENVIRON[i] \
+                } \
+        }'`
+
+# enforce some sane defaults
+QUSER=${QUSER:="qmaild"}
+CONCURRENCY=${CONCURRENCY:=50}
+CONCPERIP=${CONCPERIP:=20}
+SMTPPORT=${SMTPPORT:=25}
+export LOGLEVEL="256"
+
+exec tcpsvd -u $QUSER -v -l $ME -i ./peers/ \
+        ${CONCURRENCY:+"-c$CONCURRENCY"} ${CONCPERIP:+"-C$CONCPERIP"} ${BACKLOG:+"-b$BACKLOG"} \
+        0 $SMTPPORT $QMAIL/bin/qmail-smtpd $QMAIL/bin/auth_smtp /bin/true 2>&1
+

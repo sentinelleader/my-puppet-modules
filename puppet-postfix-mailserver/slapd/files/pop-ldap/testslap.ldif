@@ -1,0 +1,182 @@
+dn: BASEDN
+o: ORG
+dc: ORG
+objectClass: top
+objectClass: organization
+objectClass: dcObject
+structuralObjectClass: organization
+
+dn: ou=People,BASEDN
+ou: People
+objectClass: top
+objectClass: organizationalUnit
+structuralObjectClass: organizationalUnit
+
+dn: ou=Group,BASEDN
+ou: Group
+objectClass: top
+objectClass: organizationalUnit
+structuralObjectClass: organizationalUnit
+
+dn: ou=addressBook,BASEDN
+ou: addressBook
+objectClass: top
+objectClass: organizationalUnit
+structuralObjectClass: organizationalUnit
+
+dn: ou=Computers,BASEDN
+ou: Computers
+objectClass: top
+objectClass: organizationalUnit
+structuralObjectClass: organizationalUnit
+
+
+dn: userClass=Default,ou=addressBook,BASEDN
+userClass: Default
+objectClass: pilotPerson
+sn: 0
+cn: 0
+structuralObjectClass: pilotPerson
+
+
+dn: uid=root,ou=People,BASEDN
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: sambaSamAccount
+cn: root
+uid: root
+uidNumber: 0
+gidNumber: 0
+homeDirectory: /root
+loginShell: /bin/bash
+sambaLMPassword: 1644B06D863BEBE2AAD3B435B51404EE
+sambaNTPassword: 6B9A2F1528E9AD0F7CEF5B611FD355C2
+sambaAcctFlags: [U          ]
+sambaPwdLastSet: CURR_TIME
+sambaPwdCanChange: CURR_TIME
+sambaPwdMustChange: 2147483647
+sambaSID: S-1-5-21-1392895779-2678648946-1500366335-0
+sambaPrimaryGroupSID: S-1-5-21-1392895779-2678648946-1500366335-0
+displayName: root
+gecos: root
+description: root
+sn: root
+structuralObjectClass: inetOrgPerson
+userPassword:: USER_PASS
+
+dn: uid=admin,ou=People,BASEDN
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: sambaSamAccount
+objectClass: qmailUser
+objectClass: shadowAccount
+objectClass: deepofixuser
+objectClass: CourierMailAccount
+cn: deepOfix Server Administrator
+uid: admin
+uidNumber: 1000
+gidNumber: 1000
+homeDirectory: /home/admin
+loginShell: /bin/false
+sambaLMPassword: 1644B06D863BEBE2AAD3B435B51404EE
+sambaNTPassword: 6B9A2F1528E9AD0F7CEF5B611FD355C2
+sambaAcctFlags: [U          ]
+sambaPwdLastSet: CURR_TIME
+sambaPwdCanChange: CURR_TIME
+sambaPwdMustChange: 2147483647
+sambaSID: S-1-5-21-1392895779-2678648946-1500366335-1000
+sambaPrimaryGroupSID: S-1-5-21-1392895779-2678648946-1500366335-1000
+displayName: deepOfix Server Administrator
+gecos: deepOfix Server Administrator
+description: deepOfix Server Administrator
+sn: admin
+mail: admin@DOMAIN
+mailAlternateAddress: postmaster@DOMAIN
+mailAlternateAddress: mailer-daemon@DOMAIN
+mailAlternateAddress: root@DOMAIN
+qmailUID: 1000
+qmailGID: 1000
+mailMessageStore: /home/admin/Maildir/
+structuralObjectClass: inetOrgPerson
+userPassword:: USER_PASS
+
+dn: uid=easypush,ou=People,BASEDN
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: posixAccount
+cn: EasyPush Admin User
+uid: easypush
+uidNumber: 1001
+gidNumber: 1000
+homeDirectory: /dev/null
+loginShell: /bin/false
+displayName: EasyPush Admin User
+gecos: EasyPush Admin User
+description: EasyPush Admin User
+sn: easypush
+structuralObjectClass: inetOrgPerson
+userPassword:: USER_PASS
+
+dn: uid=deepofix,ou=People,BASEDN
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: posixAccount
+cn: deepOfix LDAP User
+uid: deepofix
+uidNumber: 1002
+gidNumber: 1000
+homeDirectory: /dev/null
+loginShell: /bin/false
+displayName: deepOfix LDAP User
+userPassword:: DEEP_PASS
+gecos: deepOfix LDAP User
+description: deepOfix LDAP User
+sn: deepofix
+structuralObjectClass: inetOrgPerson
+
+dn: uid=logout,ou=People,BASEDN
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: posixAccount
+cn: logout LDAP User
+uid: logout
+uidNumber: 1003
+gidNumber: 1000
+homeDirectory: /dev/null
+loginShell: /bin/false
+displayName: logout LDAP User
+userPassword:: {SHA}WSs2jTP/ToRYXMKGDQYBQRVPIKI=
+gecos: logout LDAP User
+description: logout LDAP User
+sn: logout
+structuralObjectClass: inetOrgPerson
+
+dn: cn=root,ou=Group,BASEDN
+objectClass: top
+objectClass: posixGroup
+objectClass: sambaGroupMapping
+cn: root
+gidNumber: 0
+sambaSID: S-1-5-21-1392895779-2678648946-1500366335-0
+sambaGroupType: 2
+description: root
+memberUid: root
+structuralObjectClass: posixGroup
+
+dn: cn=easypush,ou=Group,BASEDN
+objectClass: top
+objectClass: posixGroup
+objectClass: sambaGroupMapping
+cn: easypush
+gidNumber: 1000
+sambaSID: S-1-5-21-1392895779-2678648946-1500366335-1000
+sambaGroupType: 2
+description: easypush
+memberUid: root
+memberUid: easypush
+structuralObjectClass: posixGroup
+
+
+
